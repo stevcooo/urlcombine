@@ -6,5 +6,9 @@ For example, if you have a lot of tasks in Jira and all they have the same base 
 * https://jira.yourcompany.com/browse/AX-2592  
 You can setup this extension as:
 
+![Sample set up](img/sampleSetUP.png)
+
 
 And when you press CTR+SHIFT+F, a popup will appear where you only write the last 4 characters, for example 3830, and by pressing enter or Go button, the link will be opened in new tab.
+
+![Sample link](img/taskUrl.png)
