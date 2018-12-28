@@ -1,0 +1,21 @@
+{
+  "name": "Combine URL Extensions",
+  "description" : "Combines url parts",
+  "version": "1.0",
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": ["storage","http://*/*","https://*/*","activeTab","tabs"],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Combines url parts"
+    }
+  }
+}
