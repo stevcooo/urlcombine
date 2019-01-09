@@ -1,7 +1,7 @@
 {
-  "name": "Combine URL Extensions",
-  "description" : "Combines url parts",
-  "version": "1.1",
+  "name": "Combine URL",
+  "description" : "Extension that combines URL parts in order to help you easily access full URL address.",
+  "version": "1.2",
   "browser_action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
@@ -15,7 +15,7 @@
         "default": "Ctrl+Shift+F",
         "mac": "MacCtrl+Shift+F"
       },
-      "description": "Combines url parts"
+      "description" : "Extension that combines URL parts in order to help you easily access full URL address."
     }
   }
 }
