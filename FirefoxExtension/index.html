@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Url combine Extensions </title>
+    <style>
+      html,
+			body {
+				margin: 0;
+				padding: 0;
+				width: auto;
+				height: auto;
+			}
+
+		html,
+		body {
+		  width: 100%;
+		  height: 100%;
+		  overflow: hidden;
+		}
+
+		*,
+		*:before,
+		*:after {
+		  box-sizing: border-box;
+		  outline: none;
+		}
+
+		body {  
+		  font-family: 'Arimo', sans-serif;
+		  background-size: 100%;
+		  align-items: center;
+		}
+
+		p {
+		  text-align: center;
+		  color: #ffffff;
+		  font-size: 13px;
+		}
+
+		a:hover, a:visited, a:hover, a:link {
+		  color: rgba(255, 255, 255, 0.6);
+		}
+
+		.register {
+		  margin: 0 auto 0;
+		  justify-content: center;
+		  align-items: center;
+		}
+
+		.field {
+		  width: 385px;
+		  height: 70px;
+		  position: relative;
+		  margin: 10px;
+		}
+		.field input {
+		  width: 100%;
+		  border-radius: 6px;
+		  height: 70px;
+		  border: 0;
+		  padding: 10px;
+		  padding: 20px 0 0 16px;
+		  font-size: 0;
+		  background: rgb(208, 0, 76);
+		  transition: background .3s ease;
+		  color: #ffffff;
+		}
+		.field input:focus {
+		  background: rgb(208, 0, 76);
+		  font-size: 23px;
+		}
+		.field input:focus::-moz-selection {
+		  background: rgba(188, 232, 255, 0.5);
+		}
+		.field input:focus::selection {
+		  background: rgba(188, 232, 255, 0.5);
+		}
+		.field input.active {
+		  background: #065CB7;
+		  font-size: 23px;
+		}
+		.field input,
+		.field button {
+		  position: absolute;
+		  height: 70px;
+		}
+		.field button {
+		  background: rgba(0, 0, 0, 0.3);
+		  right: 0;
+		  border: 0;
+		  width: 115px;
+		  border-radius: 6px;
+		  font-size: 22px;
+		  cursor: pointer;
+		  transition: width .3s ease, background .3s ease, opacity .3s ease;
+		  opacity: 0;  
+		  color: rgb(208, 0, 76);
+		  text-transform: uppercae;
+		  pointer-events: none;
+		}
+		.field button.active {
+		  color: #ffffff;
+		  background: rgb(170, 0, 76);
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+		.field button.active:hover {
+		  background: rgb(180, 0, 76);
+		}
+		.field button.full {
+		  width: 100%;
+		}
+		.field input:focus + label {
+		  font-size: 19px;
+		  -webkit-transform: translate(16px, 11px);
+				  transform: translate(16px, 11px);
+		  color: rgba(255, 255, 255, 0.7);
+		}
+		.field label {
+		  position: absolute;
+		  color: white;
+		  -webkit-transform: translate(16px, 20px);
+				  transform: translate(16px, 20px);
+		  transition: font-size .3s ease, color .3s .1s ease, -webkit-transform .3s ease;
+		  transition: transform .3s ease, font-size .3s ease, color .3s .1s ease;
+		  transition: transform .3s ease, font-size .3s ease, color .3s .1s ease, -webkit-transform .3s ease;
+		  font-size: 28px;
+		}
+		.field label.active {
+		  font-size: 19px;
+		  -webkit-transform: translate(16px, 11px);
+				  transform: translate(16px, 11px);
+		  color: rgba(255, 255, 255, 0.7);
+		}
+		.field input:focus + label + button {
+		  opacity: 1;
+		}
+		.settingsBtn{
+		  display: inline-block;  
+		  text-align: right;
+		  margin-left: 10px;
+		}
+    </style>
+  </head>
+  <body>
+		<div class="register">    
+			<div class="field">
+				<input id="taskId" autofocus maxlength="21" type="text" />
+				<label for="taskId"><span>Story</span></label>
+				<button id="openUrlBtn" class="active">Go</button>
+			</div>
+			<div class="settings">
+					<div class="settingsBtn">
+							<input type="image" id="settingsToggle" src="settings_icon.png" width="24" height="24">
+					</div>      
+					<div class="field">
+							<input type="text" id="mainUrl"/>
+							<label id="urlLbl" for="mainUrl">
+								<span>Url</span>
+							</label>
+					</div>
+					<div class="field">
+							<input id="prefixId" type="text" />
+							<label id="prefixLbl" for="prefixId">
+								<span>Prefix</span>
+							</label>
+					</div>
+			</div>
+			
+		</div>  
+    <script src="script.js">
+    </script>
+  </body>
+</html>

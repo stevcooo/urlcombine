@@ -31,6 +31,9 @@ function trackButtonClick(e) {
 document.addEventListener("DOMContentLoaded",function(event) {
   document.getElementById("openUrlBtn").addEventListener("click",openUrl);
   document.getElementById("settingsToggle").addEventListener("click",toggleSettingsControls);
+
+  document.getElementById("mainUrl").addEventListener("focusout",storeSettings);
+  document.getElementById("prefixId").addEventListener("focusout",storeSettings);
   
   document.getElementsByTagName("BODY")[0].style.width="400px";
   document.getElementsByTagName("html")[0].style.height="120px";
@@ -58,8 +61,7 @@ function openUrl() {
     var taskId = document.getElementById('taskId').value;
 
     if(mainUrl!=undefined){
-      chrome.storage.local.set({'prefixId': prefixId});
-      chrome.storage.local.set({'mainUrl': mainUrl});
+      storeSettings();
 
       var destinationUrl = mainUrl + prefixId + taskId;
       if(!destinationUrl.startsWith("http")){
@@ -71,6 +73,14 @@ function openUrl() {
       //Google analytics
       _gaq.push(['_trackEvent', 'OpenUrlBtn', 'clicked']);
     }
+}
+
+function storeSettings(){
+    var mainUrl = document.getElementById('mainUrl').value;
+    var prefixId = document.getElementById('prefixId').value;
+
+    chrome.storage.local.set({'prefixId': prefixId});
+    chrome.storage.local.set({'mainUrl': mainUrl});
 }
 
 function toggleSettingsControls(){
