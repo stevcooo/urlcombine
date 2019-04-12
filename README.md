@@ -1,6 +1,6 @@
 Usually when you work with same website/application and you deal with a lot of links but only the last part of the URL link is changing, this extension gives you ability to setup the fixed part and access those links by their last part.
 
-You can instal the extension for: 
+You can install the extension for: 
 1. Chrome from [here](https://chrome.google.com/webstore/detail/combine-url/lnmkibhfmgahenghonphjlepcdbdjpon).
 2. Firefox from [here](https://addons.mozilla.org/en-US/firefox/addon/combine-url-extensions/).
 
