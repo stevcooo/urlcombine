@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("prefixId").addEventListener("focusout", storeSettings);
 
   document.getElementsByTagName("BODY")[0].style.width = "400px";
-  document.getElementsByTagName("html")[0].style.height = "120px";
+  document.getElementsByTagName("html")[0].style.height = "108px";
   document.getElementsByClassName("settings").hidden = true;
   chrome.storage.local.get("prefixId", function (result) {
     if (result.prefixId != undefined) document.getElementById("prefixId").value = result.prefixId;
@@ -61,10 +61,10 @@ function storeSettings() {
 function toggleSettingsControls() {
   var isHidden = document.getElementsByClassName("settings").hidden;
   if (isHidden) {
-    document.getElementsByTagName("html")[0].style.height = "290px";
+    document.getElementsByTagName("html")[0].style.height = "270px";
     document.getElementsByClassName("settings").hidden = false;
   } else {
-    document.getElementsByTagName("html")[0].style.height = "120px";
+    document.getElementsByTagName("html")[0].style.height = "108px";
     document.getElementsByClassName("settings").hidden = true;
   }
 }
