@@ -1,13 +1,13 @@
 {
-  "name": "Combine URL Extensions",
-  "description" : "Combines url parts",
-  "version": "2.1",
+  "name": "Combine URL",
+  "description": "Combines url parts",
+  "version": "2.2",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
   },
   "permissions": ["storage"],
-  "manifest_version": 3,  
+  "manifest_version": 3,
   "commands": {
     "_execute_action": {
       "suggested_key": {
