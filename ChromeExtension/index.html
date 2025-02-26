@@ -131,6 +131,29 @@
 		  text-align: right;
 		  margin-bottom: 8px;  
 		}
+		.middle-row {
+			display: flex;
+			justify-content: left; /* Centers content horizontally */
+			gap: 10px; /* Space between items */
+			margin: 8px 0;
+		}
+
+		.settingsBtn {
+			display: flex;
+			align-self: center;
+			align-items: center; /* Ensures the button aligns with text */
+			width: 24px;
+			height: 24px;
+			margin: 0;
+		}
+
+		.black-text {
+			display: flex;
+			align-self: center;
+			align-items: center; /* Align text to match the button */
+			height: 24px;
+		}
+
     </style>
   </head>
   <body>
@@ -140,9 +163,10 @@
 			<label for="taskId"><span>Story</span></label>
 			<button id="openUrlBtn" class="active">Go</button>
 		</div>
-		<div class="settingsBtn">
-			<input type="image" id="settingsToggle" src="settings_icon.png" width="24" height="24">
-		</div>   
+		<div class="middle-row">
+			<input class="settingsBtn" type="image" id="settingsToggle" src="settings_icon.png" width="24" height="24">
+			<span class="black-text">Ctrl+Shift+F is your friend</span>
+		</div>
 		<div class="settings">			   
 			<div class="field">
 					<input type="text" id="mainUrl"/>

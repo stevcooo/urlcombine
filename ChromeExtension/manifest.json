@@ -1,12 +1,12 @@
 {
   "name": "Combine URL",
   "description": "Combines url parts",
-  "version": "2.2",
+  "version": "2.3",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage","contextMenus"],
   "manifest_version": 3,
   "commands": {
     "_execute_action": {
@@ -16,5 +16,8 @@
       },
       "description": "Combines url parts"
     }
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }
