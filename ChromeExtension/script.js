@@ -8,6 +8,8 @@ function trackButtonClick(e) {
   _gaq.push(["_trackEvent", e.target.id, "clicked"]);
 }
 
+const documentMinBodyHeight = "108px";
+
 document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("openUrlBtn").addEventListener("click", openUrl);
   document.getElementById("settingsToggle").addEventListener("click", toggleSettingsControls);
@@ -16,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("mainUrl").addEventListener("focusout", storeSettings);
 
   document.getElementsByTagName("BODY")[0].style.width = "400px";
-  //document.getElementsByTagName("html")[0].style.height = "108px";
-  document.getElementsByClassName("settings").hidden = true;
+  document.getElementsByTagName("BODY")[0].style.height = documentMinBodyHeight;
 
   chrome.storage.local.get("mainUrl", function (result) {
     if (result.mainUrl != undefined) document.getElementById("mainUrl").value = result.mainUrl;
@@ -129,14 +130,8 @@ function storeSettings() {
 }
 
 function toggleSettingsControls() {
-  var isHidden = document.getElementsByClassName("settings").hidden;
-  if (isHidden) {
-    document.getElementsByTagName("html")[0].style.height = "270px";
-    document.getElementsByClassName("settings").hidden = false;
-  } else {
-    document.getElementsByTagName("html")[0].style.height = "108px";
-    document.getElementsByClassName("settings").hidden = true;
-  }
+  const isOnMinHeight = document.getElementsByTagName("BODY")[0].style.height === documentMinBodyHeight;
+  document.getElementsByTagName("BODY")[0].style.height = isOnMinHeight ? null : documentMinBodyHeight;
 }
 
 function getStorageSync(key) {
