@@ -54,8 +54,8 @@
 		  background: rgb(208, 0, 76);
 		  transition: background .3s ease;
 		  color: #ffffff;
-		}
-		.field input:focus {
+		  background: #065CB7;
+		  font-size: 23px;
 		  background: rgb(208, 0, 76);
 		  font-size: 23px;
 		}
@@ -64,10 +64,6 @@
 		}
 		.field input:focus::selection {
 		  background: rgba(188, 232, 255, 0.5);
-		}
-		.field input.active {
-		  background: #065CB7;
-		  font-size: 23px;
 		}
 		.field input,
 		.field button {
@@ -100,24 +96,8 @@
 		.field button.full {
 		  width: 100%;
 		}
-		.field input:focus + label {
-		  font-size: 19px;
-		  -webkit-transform: translate(16px, 11px);
-				  transform: translate(16px, 11px);
-		  color: rgba(255, 255, 255, 0.7);
-		}
 		.field label {
 		  position: absolute;
-		  color: white;
-		  -webkit-transform: translate(16px, 20px);
-				  transform: translate(16px, 20px);
-		  transition: font-size .3s ease, color .3s .1s ease, -webkit-transform .3s ease;
-		  transition: transform .3s ease, font-size .3s ease, color .3s .1s ease;
-		  transition: transform .3s ease, font-size .3s ease, color .3s .1s ease, -webkit-transform .3s ease;
-		  font-size: 28px;
-		}
-		.field label.active {
-		  font-size: 19px;
 		  -webkit-transform: translate(16px, 11px);
 				  transform: translate(16px, 11px);
 		  color: rgba(255, 255, 255, 0.7);
@@ -163,7 +143,7 @@
 			<button id="openUrlBtn" class="active">Go</button>
 		</div>
 		<div class="middle-row">
-			<input class="settingsBtn" type="image" id="settingsToggle" src="settings_icon.png" width="24" height="24">
+			<input class="settingsBtn" type="image" id="settingsToggle" src="settings.png" width="24" height="24">
 			<span class="black-text">Ctrl+Shift+F is your friend</span>
 		</div>
 		<div class="settings">			   
@@ -174,7 +154,8 @@
 					</label>
 			</div>
 			<div class="middle-row">
-				<button class="active" id="addProjectPrefixBtn">+ Add project</button>
+				<input class="settingsBtn" id="addProjectPrefixBtn" type="image" id="settingsToggle" src="more.png" width="24" height="24">
+				<span class="black-text">Add project prefix</span>
 			</div>
 			<div id="prefixesContainer">
 				

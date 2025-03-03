@@ -30,7 +30,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var prefixes = result.prefixes;
     var prefixesContainer = document.getElementById("prefixesContainer");
     for (var i = 0; i < prefixes.length; i++) {
-      var prefix = prefixes[i];
+      addProjectPrefixElement(prefixes[i], prefixesContainer);
+    }
+  });
+
+});
+
+function addProjectPrefixElement(prefix, parentElement) {
       var div = document.createElement("div");
       div.className = "field";
       var input = document.createElement("input");
@@ -44,12 +50,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
       var span = document.createElement("span");
       span.innerHTML = "Project prefix";
       label.appendChild(span);
-      div.appendChild(label);
-      prefixesContainer.appendChild(div);
-    }
-  });
+  div.appendChild(label);
+  // Here I need to add a button to remove the prefix
+  var removeButton = document.createElement("button");
+  removeButton.innerHTML = "Remove";
+  removeButton.className = "active";
+  removeButton.onclick = function () {
+    div.remove();
+    storeSettings();
+  }
+  div.appendChild(removeButton);
 
-});
+      parentElement.appendChild(div);
+}
 
 document.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
@@ -62,41 +75,32 @@ async function openUrl() {
   if (!mainUrl) return;
   
   let prefixes = await getStorageSync("prefixes");
-  if(!prefixes || prefixes.length === 0) return;
-  
   var taskId = document.getElementById("taskId").value;
 
+  if (!prefixes || prefixes.length === 0) {
+    //In this case we will open the mainUrl + taskId
+    var destinationUrl = mainUrl + taskId;
+    chrome.tabs.create({ url: destinationUrl });
+  }
+  else { // we will open the mainUrl + prefix + taskId for each prefix
+      for (var i = 0; i < prefixes.length; i++) {
+      var destinationUrl = mainUrl + prefixes[i] + taskId;
+      if (!destinationUrl.startsWith("http")) {
+        destinationUrl = "http://" + destinationUrl;
+      }
 
-  for (var i = 0; i < prefixes.length; i++) {
-    var destinationUrl = mainUrl + prefixes[i] + taskId;
-    if (!destinationUrl.startsWith("http")) {
-      destinationUrl = "http://" + destinationUrl;
-    }
-
-    if (!await isLinkBroken(destinationUrl)) {
-          chrome.tabs.create({ url: destinationUrl });
-    } else {
-      console.log("Link is broken", destinationUrl);
+      if (!await isLinkBroken(destinationUrl)) {
+            chrome.tabs.create({ url: destinationUrl });
+      } else {
+        console.log("Link is broken", destinationUrl);
+      }
     }
   }
+  
 }
 
 async function addProjectPrefix() {
-  var prefixesContainer = document.getElementById("prefixesContainer");
-  var div = document.createElement("div");
-  div.className = "field";
-  var input = document.createElement("input");
-  input.type = "text";
-  input.className = "projectPrefixInput";
-  input.addEventListener("focusout", storeSettings);
-  div.appendChild(input);
-  var label = document.createElement("label");
-  label.htmlFor = "prefixId";
-  var span = document.createElement("span");
-  span.innerHTML = "Project prefix";
-  label.appendChild(span);
-  div.appendChild(label);
-  prefixesContainer.appendChild(div);
+  addProjectPrefixElement("", document.getElementById("prefixesContainer"));
 }
 
 async function isLinkBroken(url) {
