@@ -1,7 +1,7 @@
 {
   "name": "Combine URL",
   "description": "Combines url parts",
-  "version": "2.3",
+  "version": "2.4",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
