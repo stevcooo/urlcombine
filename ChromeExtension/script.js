@@ -1,3 +1,4 @@
+import { openUrl } from "./shared.js";
 /**
  * Track a click on a button using the asynchronous tracking API.
  *
@@ -11,7 +12,7 @@ function trackButtonClick(e) {
 const documentMinBodyHeight = "108px";
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  document.getElementById("openUrlBtn").addEventListener("click", openUrl);
+  document.getElementById("openUrlBtn").addEventListener("click", openTask);
   document.getElementById("settingsToggle").addEventListener("click", toggleSettingsControls);
   document.getElementById("addProjectPrefixBtn").addEventListener("click", addProjectPrefix);
 
@@ -71,47 +72,13 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
-async function openUrl() {
-  let mainUrl = await getStorageSync("mainUrl");
-  if (!mainUrl) return;
-  
-  let prefixes = await getStorageSync("prefixes");
+async function openTask() {
   var taskId = document.getElementById("taskId").value;
-
-  if (!prefixes || prefixes.length === 0) {
-    //In this case we will open the mainUrl + taskId
-    var destinationUrl = mainUrl + taskId;
-    chrome.tabs.create({ url: destinationUrl });
-  }
-  else { // we will open the mainUrl + prefix + taskId for each prefix
-      for (var i = 0; i < prefixes.length; i++) {
-      var destinationUrl = mainUrl + prefixes[i] + taskId;
-      if (!destinationUrl.startsWith("http")) {
-        destinationUrl = "http://" + destinationUrl;
-      }
-
-      if (!await isLinkBroken(destinationUrl)) {
-            chrome.tabs.create({ url: destinationUrl });
-      } else {
-        console.log("Link is broken", destinationUrl);
-      }
-    }
-  }
-  
+  await openUrl(taskId);
 }
 
 async function addProjectPrefix() {
   addProjectPrefixElement("", document.getElementById("prefixesContainer"));
-}
-
-async function isLinkBroken(url) {
-    try {
-      const response = await fetch(`https://broken-link-checker-1xea.vercel.app/check?url=${url}`);
-      console.log("response", response);
-      return !response.ok; // Returns true if the link is broken
-    } catch (error) {
-        return true; // If fetch fails (network error, CORS issue, etc.), consider the link broken
-    }
 }
 
 function storeSettings() {
@@ -132,12 +99,4 @@ function storeSettings() {
 function toggleSettingsControls() {
   const isOnMinHeight = document.getElementsByTagName("BODY")[0].style.height === documentMinBodyHeight;
   document.getElementsByTagName("BODY")[0].style.height = isOnMinHeight ? null : documentMinBodyHeight;
-}
-
-function getStorageSync(key) {
-    return new Promise((resolve) => {
-        chrome.storage.local.get([key], function (result) {
-            resolve(result[key]);
-        });
-    });
 }
