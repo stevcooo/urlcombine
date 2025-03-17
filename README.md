@@ -1,34 +1,43 @@
-Usually when you work with same website/application and you deal with a lot of links but only the last part of the URL link is changing, this extension gives you ability to setup the fixed part and access those links by their last part.
+# Combine URL Extension  
 
-You can install the extension from [here](https://chrome.google.com/webstore/detail/combine-url/lnmkibhfmgahenghonphjlepcdbdjpon).
+When working with the same website or application, you often deal with multiple links where only the last part of the URL changes. This extension allows you to set up a fixed base URL and quickly access links by entering only the variable part.  
 
-For example, if you have a lot of tasks in Jira and all they have the same base URL but only the last few characters are different.
+You can install the extension from [here](https://chrome.google.com/webstore/detail/combine-url/lnmkibhfmgahenghonphjlepcdbdjpon).  
 
-* https://comp.com/browse/AX-3830
-* https://comp.com/browse/AX-3822
-* https://comp.com/browse/AX-2592  
-You can setup this extension as:
+## How It Works  
 
-![Sample set up](img/simple-setup.png)
+For example, if you manage multiple tasks in Jira, where all task URLs share the same base but differ in the final few characters:  
 
+- `https://comp.com/browse/AX-3830`  
+- `https://comp.com/browse/AX-3822`  
+- `https://comp.com/browse/AX-2592`  
 
-And when you press CTR+SHIFT+F, a popup will appear where you only write the last 4 characters, for example 3830, and by pressing enter or Go button, the link will be opened in new tab.
+You can configure the extension like this:  
 
-![Sample link](img/taskUrl.png)
+![Sample setup](img/simple-setup.png)  
 
-Additional thing you can do is to use the `right-click` context menu on your browser when you select a text, that is the ID of the url you want to open.
-For example:
-![Sample set up](img/context-menu.png)
+Once set up, pressing **CTRL + SHIFT + F** opens a popup where you only need to enter the last four characters (e.g., `3830`). Pressing **Enter** or clicking the **Go** button will open the corresponding link in a new tab.  
 
+![Sample link](img/taskUrl.png)  
 
-## If you have multiple projects, for example ##
+### Right-Click Context Menu  
 
-* https://comp.com/browse/PROD-3830
-* https://comp.com/browse/AB-3822
-* https://comp.com/browse/BUG-2592  
+Additionally, you can use the browser’s **right-click context menu** to open a link. Simply select the task ID in any text, right-click, and choose the extension option to open the corresponding URL.  
 
+Example:  
 
-You can setup this extension as:
-![Sample set up](img/multiple-projects.png)
+![Context menu](img/context-menu.png)  
 
-And now, when you use the extension, with the shortcut or the right-click context, a separate tab will open for each of the defined project prefixes.
+## Handling Multiple Projects  
+
+If you work across multiple projects with different prefixes, such as:  
+
+- `https://comp.com/browse/PROD-3830`  
+- `https://comp.com/browse/AB-3822`  
+- `https://comp.com/browse/BUG-2592`  
+
+You can configure the extension accordingly:  
+
+![Multiple projects setup](img/multiple-projects.png)  
+
+Now, when you use the extension (either via shortcut or right-click context menu), a separate tab will open for each project prefix, ensuring quick and efficient navigation.  
