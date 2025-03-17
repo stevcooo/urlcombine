@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "openNewTab",
     title: "Open '%s'",
-    contexts: ["selection"] // Only show for selected text
+    contexts: ["selection"], // Only show for selected text
   });
 });
 

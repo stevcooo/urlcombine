@@ -1,10 +1,14 @@
 {
   "name": "Combine URL",
   "description": "Combines url parts",
-  "version": "2.5",
+  "version": "2.6",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png"
   },
   "permissions": ["storage","contextMenus"],
   "manifest_version": 3,

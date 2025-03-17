@@ -17,29 +17,23 @@ export async function isLinkBroken(url) {
 }
 
 export async function openUrl(taskId) {
+  if (!taskId) {
+    console.error("Invalid taskId:", taskId);
+    return;
+  }
+
   let mainUrl = await getStorageSync("mainUrl");
   if (!mainUrl) return;
-  
+
   let prefixes = await getStorageSync("prefixes");
 
-  if (!prefixes || prefixes.length === 0) {
-    //In this case we will open the mainUrl + taskId
-    var destinationUrl = mainUrl + taskId;
+  if (!Array.isArray(prefixes) || prefixes.length === 0) {
+    let destinationUrl = mainUrl + taskId;
     chrome.tabs.create({ url: destinationUrl });
-  }
-  else { // we will open the mainUrl + prefix + taskId for each prefix
-      for (var i = 0; i < prefixes.length; i++) {
-      var destinationUrl = mainUrl + prefixes[i] + taskId;
-      if (!destinationUrl.startsWith("http")) {
-        destinationUrl = "http://" + destinationUrl;
-      }
-
-      if (!await isLinkBroken(destinationUrl)) {
-            chrome.tabs.create({ url: destinationUrl });
-      } else {
-        console.log("Link is broken", destinationUrl);
-      }
+  } else {
+    for (let prefix of prefixes) {
+      let destinationUrl = mainUrl + prefix + taskId;
+      chrome.tabs.create({ url: destinationUrl });
     }
   }
-  
 }
