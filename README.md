@@ -4,6 +4,9 @@ When working with the same website or application, you often deal with multiple 
 
 You can install the extension from [here](https://chrome.google.com/webstore/detail/combine-url/lnmkibhfmgahenghonphjlepcdbdjpon).  
 
+## Demo
+![Sample setup](img/demo-one.gif)  
+
 ## How It Works  
 
 For example, if you manage multiple tasks in Jira, where all task URLs share the same base but differ in the final few characters:  
